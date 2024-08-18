@@ -12,6 +12,13 @@ class CRUDService:
         self.db.commit()
         self.db.refresh(model_obj)
         return model_obj
+    
+    def create_movie(self, data_obj, model, current_user):
+        model_obj = model(user_id=current_user.id, total_rating= 0,**data_obj.model_dump())
+        self.db.add(model_obj)
+        self.db.commit()
+        self.db.refresh(model_obj)
+        return model_obj
 
     def create_user(self, data_obj, model, hashed_password):
         data_obj.password = hashed_password

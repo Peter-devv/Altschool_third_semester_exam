@@ -18,7 +18,7 @@ class Movie(Base):
     director = Column(String, nullable=False) 
     created_at = Column(TIMESTAMP(timezone=True), server_default=text("now()"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    total_rating = Column(FLOAT, nullable=False)
+    total_rating = Column(FLOAT, nullable=True)
     user = relationship("User") 
     ratings = relationship("Rating", back_populates="movie")
     comments = relationship("Comment", back_populates="movie")

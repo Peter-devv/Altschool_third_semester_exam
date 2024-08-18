@@ -6,7 +6,7 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError 
 from . import database, schemas, models, config
 
- 
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 SECRET_KEY = config.settings.secret_key
