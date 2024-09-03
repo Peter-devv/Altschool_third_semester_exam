@@ -32,7 +32,7 @@ def get_comments(movie_id: int, db: Session = Depends(database.get_db), crud: CR
     return new_movie
 
 
-@router.post("/reply", status_code=status.HTTP_201_CREATED, response_model = schemas.RatingResponseModel)
+@router.post("/reply", status_code=status.HTTP_201_CREATED, response_model = schemas.ReplyCreate)
 def reply_comment(reply_in: schemas.ReplyCreate, db: Session = Depends(database.get_db), current_user = Depends(oauth2.get_current_user), crud: CRUDService = Depends()): 
     comment = crud.get(reply_in.comment_id, models.Comment)
     logger.info("Replying comment...")

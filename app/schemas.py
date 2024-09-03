@@ -131,4 +131,4 @@ class MovieCommentResponseModel(BaseModel):
 
 class ReplyCreate(BaseModel):
     comment_id: int
-    content: str
+    reply: str
